@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { Row } from "../model/row.model";
-import { Field } from "../model/field.model";
+import { Component,OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +9,12 @@ export class AppComponent {
   title = 'Mines';
 
 
+  ngOnInit(){
+    this.startGame();
+  }
+  startGame(){
+
+    //starting game !!!!
+  }
 
 }
