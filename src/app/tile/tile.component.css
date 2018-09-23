@@ -1,0 +1,9 @@
+*{
+    margin:10px;
+}
+.tile{
+    display: inline-flex;
+    position:relative;
+    background:lightslategray;
+    border: 3px solid yellow;
+}

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Field } from "../../model/field.model";
 
 @Component({
   selector: 'app-tile',
@@ -6,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tile.component.css']
 })
 export class TileComponent implements OnInit {
-
-  constructor() { }
+  @Input() field:Field
+  constructor() {
+  }
 
   ngOnInit() {
   }
