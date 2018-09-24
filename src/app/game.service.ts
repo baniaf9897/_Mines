@@ -71,9 +71,12 @@ export class GameService {
 
     })
 
-    var _row
+    var _row: Row
     for(var i = 1; i <= row;i++){
         _row =  new Row(this.getAllFieldsOfARow(i))
+        _row.fields.sort((a,b) => {
+            return (a.x) - (b.x)
+        })
         this.gameboard.addRow(_row)
     }
 }
