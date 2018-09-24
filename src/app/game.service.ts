@@ -1,20 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Field } from "../model/field.model";
+import { Row } from '../model/row.model';
+import { Gameboard } from '../model/gameboard.model';
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class GameService {
 
-  board
+  board: Field[] = new Array()
+  gameboard:Gameboard
   length
 
-  constructor() { }
+  constructor() { 
+      this.gameboard = new Gameboard()
+  }
 
-  distributeMines(amountMines:number){       
+  createGame(amountMines:number,col:number,row:number){
+    
+    this.distributeMines(amountMines,col,row)
+    return this.gameboard;
+  }
+
+  private distributeMines(amountMines:number,col:number,row:number){       
+   
     //distributes mines
     while(amountMines > 0){
-         let x = Math.floor(Math.random() * 10) +1 
-         let y = Math.floor(Math.random() * 10) +1
+         let x = Math.floor(Math.random() * col) +1 
+         let y = Math.floor(Math.random() * row) +1
          if(checkIfFieldAlreadyExist(x,y,this.board)){
             let mine = new Field(true,x,y)
             mine.value = 'X'
@@ -23,8 +37,8 @@ export class GameService {
          }
     }
     //distribute fields
-    for(let x = 1; x <= this.length; x++){
-        for(let y = 1; y <= this.length; y++){
+    for(let x = 1; x <= col; x++){
+        for(let y = 1; y <= row; y++){
             if(checkIfFieldAlreadyExist(x,y,this.board)){
                 let field = new Field(false,x,y)
                 this.board.push(field)
@@ -56,11 +70,17 @@ export class GameService {
         return (this.length * a.y + a.x) - (this.length * b.y + b.x)
 
     })
+
+    var _row
+    for(var i = 1; i <= row;i++){
+        _row =  new Row(this.getAllFieldsOfARow(i))
+        this.gameboard.addRow(_row)
+    }
 }
 getLength(){
-    return this.length
+    return this.gameboard.rows
 }
-getAllFieldsOfARow(i: number) :Array<Field>{
+private getAllFieldsOfARow(i: number) :Array<Field>{
     return this.board.filter((field) => {
         return field.y === i
     })
