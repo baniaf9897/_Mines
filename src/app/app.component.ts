@@ -19,7 +19,7 @@ export class AppComponent {
   }
   
   startGame(){
-    this.game = this.gameService.createGame(10,10,10)
+    this.game = this.gameService.createGame(30,10,10)
     //starting game here
     // calling service for distributing mines and creating game
   }

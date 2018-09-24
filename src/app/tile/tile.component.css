@@ -1,9 +1,10 @@
 *{
-    margin:10px;
+    margin:5px;
 }
 .tile{
+    height: 60px;
+    width: 60px;
     display: inline-flex;
     position:relative;
     background:lightslategray;
-    border: 3px solid yellow;
 }
