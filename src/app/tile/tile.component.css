@@ -2,9 +2,18 @@
     margin:5px;
 }
 .tile{
-    height: 60px;
-    width: 60px;
-    display: inline-flex;
+    height: 10px;
+    width: 10px;
+    display: inline-flex !important;
     position:relative;
-    background:lightslategray;
+    background:lightgray;
+}
+.mine{
+    background:orange;
+}
+.revealed{
+    background:gray;
+}
+.marked{
+    background:red;
 }

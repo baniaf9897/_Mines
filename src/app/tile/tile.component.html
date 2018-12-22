@@ -1,4 +1,4 @@
-<div class="tile">
-  <h1>{{field.value}}</h1>
-  <p>{{field.x}} {{field.y}}</p>
-</div>
+<mat-card  class="tile" [class.revealed]=" field.isRevealed " [ngClass] ="{'mine' : field.isRevealed && field.isMine, 'marked':field.isMarked}" >
+  <p *ngIf="field.isRevealed == true"  >{{field.value}}</p>
+</mat-card>
+

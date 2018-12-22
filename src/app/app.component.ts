@@ -8,20 +8,32 @@ import { GameService } from './game.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+ 
   title = 'Mines';
-  game:Gameboard
-  length
+  game:Gameboard;
+  subscription;
+
   //inject service 
-  constructor(private gameService:GameService){}
+  constructor(private gameService:GameService){
+    
+    this.subscription = this.gameService.gameOver.subscribe((isGameOver)=>{
+      if(isGameOver){
+        this.startGame();
+      }
+    })
+    
+  }
   
   ngOnInit(){
     this.startGame();
   }
   
   startGame(){
-    this.game = this.gameService.createGame(30,10,10)
-    //starting game here
-    // calling service for distributing mines and creating game
+    this.game = this.gameService.createGame(0,2,2)
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
 }

@@ -1,6 +1,8 @@
 <div class="row">
     <app-tile *ngFor="let tile of fields"
-            [field] = tile
+            [field] = "tile"
+            (click) ="handleClick(tile)"
+            (contextmenu)="onRightClick($event,tile)"
     >
     </app-tile>
 </div>

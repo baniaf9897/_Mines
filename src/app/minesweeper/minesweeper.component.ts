@@ -9,13 +9,12 @@ import { Gameboard } from '../../model/gameboard.model';
   styleUrls: ['./minesweeper.component.css']
 })
 export class MinesweeperComponent implements OnInit, OnChanges {
-  @Input() game:Gameboard
-  rows = new Array()
+  @Input() game:Gameboard;
+  rows = new Array();
 
   ngOnChanges(changes){
-    if(changes.game){
-      this.rows = this.game.rows
-      console.log(this.rows)
+    if(changes){
+      this.rows = this.game.rows;
     }
   }
   constructor() {
